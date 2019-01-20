@@ -53,6 +53,7 @@
 				text : '增加',
 				iconCls : 'icon-add',
 				handler : function(){
+					$("#standardForm").form("reset");//清空
 					$("#standardWindow").window('open');
 				}
 			}, {
@@ -150,33 +151,33 @@
 						<tr>
 							<td>收派标准名称</td>
 							<td>
-								<input type="text" name="name" 
+								<input type="text" name="name" id="name"
 									class="easyui-validatebox" data-options="required:true" />
 							</td>
 						</tr>
 						<tr>
 							<td>最小重量</td>
 							<td>
-								<input type="text" name="minWeight" 
+								<input type="text" name="minWeight" id="minWeight"
 										class="easyui-numberbox" required="true" />
 							</td>
 						</tr>
 						<tr>
 							<td>最大重量</td>
 							<td>
-								<input type="text" name="maxWeight" class="easyui-numberbox" required="true" />
+								<input type="text" name="maxWeight" id="maxWeight" class="easyui-numberbox" required="true" />
 							</td>
 						</tr>
 						<tr>
 							<td>最小长度</td>
 							<td>
-								<input type="text" name="minLength" class="easyui-numberbox" required="true" />
+								<input type="text" name="minLength" id="minLength" class="easyui-numberbox" required="true" />
 							</td>
 						</tr>
 						<tr>
 							<td>最大长度</td>
 							<td>
-								<input type="text" name="maxLength" class="easyui-numberbox" required="true" />
+								<input type="text" name="maxLength" id="maxLength" class="easyui-numberbox" required="true" />
 							</td>
 						</tr>
 					</table>
