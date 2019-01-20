@@ -23,6 +23,7 @@ public class StandardServiceImpl implements StandardService {
         standardDao.save(standard);
     }
 
+    //主分支分页查询
     @Override
     public Page<Standard> pageQuery(int page, int rows) {
         PageRequest pageRequest = PageRequest.of(page-1,rows);
