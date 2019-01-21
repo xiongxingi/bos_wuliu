@@ -10,4 +10,6 @@ public interface StandardService{
     public void save(Standard standard);
 
     public Page<Standard> pageQuery(int page, int rows);
+
+    public List<Standard> findAll();
 }

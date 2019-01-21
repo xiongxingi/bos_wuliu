@@ -29,4 +29,9 @@ public class StandardServiceImpl implements StandardService {
         PageRequest pageRequest = PageRequest.of(page-1,rows);
         return standardDao.findAll(pageRequest);
     }
+
+    @Override
+    public List<Standard> findAll() {
+        return standardDao.findAll();
+    }
 }

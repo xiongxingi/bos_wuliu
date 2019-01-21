@@ -1,6 +1,7 @@
 package cn.itcast.controller;
 
 import cn.itcast.Service.StandardService;
+import cn.itcast.domain.Courier;
 import cn.itcast.domain.Standard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,5 +36,12 @@ public class StandardController {
         map.put("rows",query.getContent());
 
         return map;
+    }
+
+    @RequestMapping("/standard_findAll")
+    @ResponseBody
+    public List<Standard> findAll(){
+        List<Standard> standardList = standardService.findAll();
+        return standardList;
     }
 }

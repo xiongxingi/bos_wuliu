@@ -35,11 +35,24 @@
         }; 
 		
 			function doAdd(){
+			    $("#courierForm").form("reset");
 				$('#addWindow').window("open");
 			}
 			
 			function doEdit(){
-				alert("修改...");
+                // 获取当前datagrid选中数据
+                var rows = $("#grid").datagrid('getSelections');
+                if(rows.length != 1){
+                    // 没选 或 多选
+                    $.messager.alert("提示信息","修改数据时，只能选中一行","warning");
+                }else{
+                    // 只选中一行
+                    var row = rows[0];
+                    // 进行表单回显操作
+                    $("#courierForm").form('load',row);
+                    // 显示窗口
+                    $("#addWindow").window('open');
+                }
 			}
 			
 			function doDelete(){
@@ -63,7 +76,23 @@
 			}
 			
 			function doRestore(){
-				alert("将取派员还原...");
+                // 获取页面中所有勾选快递员 id
+                var rows = $("#grid").datagrid('getSelections');
+                if(rows.length == 0){
+                    // 没有选中数据
+                    $.messager.alert("警告","还原快递员必须选中一条以上数据","warning");
+                }else{
+                    // 选中数据
+                    // 获取选中所有id ，拼接字符串方法
+                    var array = new Array();
+                    for(var i=0; i<rows.length; i++){
+                        array.push(rows[i].id);
+                    }
+                    // 生成字符串
+                    var ids = array.join(",");
+                    // 将字符串发送服务器
+                    window.location.href = "../../courier_returnBatch?ids=" + ids;
+                }
 			}
 			//工具栏
 			var toolbar = [ {
@@ -246,7 +275,9 @@
 					action="../../courier_save" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
-							<td colspan="4">收派员信息</td>
+							<td colspan="4">收派员信息
+								<input type="hidden" name="id" />
+							</td>
 						</tr>
 						<!-- TODO 这里完善收派员添加 table -->
 						<tr>
@@ -286,7 +317,7 @@
 							</td>
 							<td>取派标准</td>
 							<td>
-								<input type="text" name="standard.id" 
+								<input type="text" name="standard.id"  id="standard_name"
 										class="easyui-combobox" 
 										data-options="required:true,valueField:'id',textField:'name',
 											url:'../../standard_findAll'"/>

@@ -164,4 +164,24 @@ public class Courier {
 	public void setStandard(Standard standard) {
 		this.standard = standard;
 	}
+
+	@Override
+	public String toString() {
+		return "Courier{" +
+				"id=" + id +
+				", courierNum='" + courierNum + '\'' +
+				", name='" + name + '\'' +
+				", telephone='" + telephone + '\'' +
+				", pda='" + pda + '\'' +
+				", deltag=" + deltag +
+				", checkPwd='" + checkPwd + '\'' +
+				", type='" + type + '\'' +
+				", company='" + company + '\'' +
+				", vehicleType='" + vehicleType + '\'' +
+				", vehicleNum='" + vehicleNum + '\'' +
+				", standard=" + standard +
+				", takeTime=" + takeTime +
+				", fixedAreas=" + fixedAreas +
+				'}';
+	}
 }
