@@ -44,4 +44,5 @@ public class StandardController {
         List<Standard> standardList = standardService.findAll();
         return standardList;
     }
+
 }

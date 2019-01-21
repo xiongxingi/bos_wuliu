@@ -50,6 +50,8 @@
                     var row = rows[0];
                     // 进行表单回显操作
                     $("#courierForm").form('load',row);
+                    //回显下拉框
+					$('#standard_name').combobox('setValue',row.standard.id);
                     // 显示窗口
                     $("#addWindow").window('open');
                 }
@@ -248,8 +250,9 @@
 					var params = $("#searchForm").serializeJson() ;
 					// 将json对象 绑定datagrid上，完成带有条件 查询请求 
 					$("#grid").datagrid('load',params); 
-					// 关闭查询窗口 
+					// 关闭查询窗口
 					$("#searchWindow").window('close');
+
 				});
 			});
 		

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -25,9 +26,9 @@ public class CourierController {
 
     @RequestMapping("/courier_pageQuery")
     @ResponseBody
-    public Map pageQuery(int page,int rows){
+    public Map pageQuery(int page,int rows,Courier courier){
         Map<String,Object> map = new HashMap<String, Object>();
-        Page<Courier> query = courierService.pageQuery(page, rows);
+        Page<Courier> query = courierService.pageQuery(page, rows,courier);
         map.put("total",query.getTotalElements());
         map.put("rows",query.getContent());
         return map;
@@ -44,4 +45,5 @@ public class CourierController {
         courierService.returnBatch(ids);
         return "redirect:/pages/base/courier.html";
     }
+
 }
