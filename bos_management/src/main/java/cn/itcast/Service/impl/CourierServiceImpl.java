@@ -43,9 +43,9 @@ public class CourierServiceImpl implements CourierService {
                     params.add(p1);
                 }
                 //收派标准
-                //Join<Courier,Standard> standardJoin = root.join("standard", JoinType.INNER);
+                Join<Courier, Standard> standardJoin = root.join("standard", JoinType.INNER);//连接查询的表
                 if (courier.getStandard()!=null && StringUtils.isNotBlank(courier.getStandard().getName())){
-                    Predicate p2 = cb.like(root.get("standard").as(String.class), "%" + courier.getStandard().getName() + "%");
+                    Predicate p2 = cb.like(standardJoin.get("name").as(String.class), "%" + courier.getStandard().getName() + "%");
                     params.add(p2);
                 }
                 //单位
