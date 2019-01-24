@@ -221,6 +221,7 @@
 			});
 		
 			function doDblClickRow(rowIndex){
+                $('#grid').datagrid('clearChecked',rowIndex);
 			    $("#grid").datagrid('selectRow', rowIndex);
                 var row = $("#grid").datagrid("getSelected");
                 $("#areaForm").form('load',row);
