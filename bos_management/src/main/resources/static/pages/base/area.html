@@ -35,15 +35,7 @@
 				});
 				return serializeObj;
 			};
-			//$(function(){
-			//这个方法是页面加载是就初始化里面的内容
-			//里面多方一些事件初始化，加载器初始化
-			//随着页面加载就加载
-            // 先将body隐藏，再显示，不会出现页面刷新效果
-			//});
-            $(function() {
 
-            });
 
                 function doAdd() {
                     $("#areaForm").form("reset");
@@ -228,9 +220,15 @@
 
 			});
 		
-			function doDblClickRow(){
-				alert("双击表格数据...");
-			}
+			function doDblClickRow(rowIndex){
+			    $("#grid").datagrid('selectRow', rowIndex);
+                var row = $("#grid").datagrid("getSelected");
+                $("#areaForm").form('load',row);
+                // 显示窗口
+                $("#addWindow").window('open');
+                $('#grid').datagrid('clearChecked',rowIndex);
+
+            }
 		</script>
 	</head>
 

@@ -54,7 +54,7 @@ public class AreaController {
     }
 
     @RequestMapping("/area_batchImport")
-    public String batchImport(@RequestBody MultipartFile file) throws IOException {
+    public String batchImport(@RequestBody MultipartFile file) 9throws IOException {
         // 编写解析代码逻辑
         // 基于.xls 格式解析 HSSF
         // 1、 加载Excel文件对象
