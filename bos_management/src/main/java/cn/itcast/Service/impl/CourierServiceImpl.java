@@ -6,6 +6,7 @@ import cn.itcast.domain.Courier;
 import cn.itcast.domain.Standard;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -59,6 +60,7 @@ public class CourierServiceImpl implements CourierService {
                     params.add(p4);
                 }
                 return cb.and(params.toArray(new Predicate[0]));
+
             }
         };
 
